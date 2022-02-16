@@ -20,7 +20,7 @@ const PrivatePage = () => {
         <>
            <Logout />
       <ContactForm />
-      <h2><img width="50px" height="50px" src={data.avatar}/>{data.name}'s Contacts</h2>
+      <h2><img width="50px" height="50px" alt={data.name} src={data.avatar}/>{data.name}'s Contacts</h2>
       <Filter />
       <ContactList />
         </>
