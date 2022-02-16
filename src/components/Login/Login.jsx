@@ -21,6 +21,9 @@ const Login = () => {
   return (
     <div>
       <h1>Login</h1>
+      <p>You can also use this <br/> login: zbyszek pass: stonoga <br/>
+          just to check if login and contact management works fine
+      </p>
       <form onSubmit={login}>
         <label>
           username: <input name="username" type="text" placeholder="username" defaultValue={"juzek"}/>
