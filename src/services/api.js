@@ -8,7 +8,7 @@ const phonebookApi = createApi({
   tagTypes: ["Contacts"],
   endpoints: (builder) => ({
     getContacts: builder.query({
-      query: () => `contacts/`,
+      query: () => `users/1/contacts`,
       providesTags: ["Contacts"],
     }),
     deleteContactById: builder.mutation({

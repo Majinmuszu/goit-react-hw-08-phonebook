@@ -1,0 +1,21 @@
+{
+    "id": "$datatype.uuid",
+    "createdAt": "$date.recent",
+    "name": "$name.findName",
+    "username": "$internet.userName",
+    "password": "$internet.password",
+    "contacts": [
+      {
+        "id": "$datatype.uuid",
+        "name": "$name.findName",
+        "phone": "$phone.phoneNumberFormat",
+        "createdAt": "$date.recent"
+      },
+      {
+        "id": "$datatype.uuid",
+        "name": "$name.findName",
+        "phone": "$phone.phoneNumberFormat",
+        "createdAt": "$date.recent"
+      }
+    ]
+  }
