@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import {
   useDeleteContactByIdMutation,
   useGetContactsQuery,
@@ -17,9 +17,9 @@ const getVisibleContacts = (contacts, filter) => {
   );
 };
 export const Contact = () => {
-  const { userId } = useParams();
-  console.log(userId)
-  const { data, error, isLoading } = useGetContactsQuery(userId);
+  const currentUser = useSelector(state => state.loggedUser)
+  console.log(currentUser.id)
+  const { data, error, isLoading } = useGetContactsQuery(currentUser.id);
   // console.log(data, error, isLoading);
 
   const [deleteContact] = useDeleteContactByIdMutation();

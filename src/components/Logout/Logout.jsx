@@ -1,10 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { userLoggedIn } from "../../redux/actions";
 
 const Logout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(userLoggedIn(false));
+    navigate("/");
+  };
   return (
     <div>
-      <Link to="/">Logout</Link>
+      <button onClick={logout}>
+        Logout
+      </button>
     </div>
   );
 };

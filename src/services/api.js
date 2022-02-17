@@ -11,14 +11,17 @@ const phonebookApi = createApi({
       query: (id) => `users/${id}/contacts`,
       providesTags: ["Contacts"],
     }),
+
     getUsers: builder.query({
       query: () => `users/`,
       providesTags: ["Users"],
     }),
+
     getUserById: builder.query({
       query: (id) => `users/${id}`,
       providesTags: ["Users"],
     }),
+
     deleteContactById: builder.mutation({
       query: (id) => ({
         url: `contacts/${id}`,
@@ -26,6 +29,7 @@ const phonebookApi = createApi({
       }),
       invalidatesTags: ["Contacts"],
     }),
+    
     postContact: builder.mutation({
       query: (contact) => ({
         url: "contacts/",
