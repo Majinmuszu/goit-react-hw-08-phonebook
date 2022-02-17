@@ -17,9 +17,9 @@ const getVisibleContacts = (contacts, filter) => {
   );
 };
 export const Contact = () => {
-  const currentUser = useSelector(state => state.loggedUser)
-  console.log(currentUser.id)
-  const { data, error, isLoading } = useGetContactsQuery(currentUser.id);
+  const currentUserId = useSelector(state => state.loggedUser.id)
+  console.log(currentUserId)
+  const { data, error, isLoading } = useGetContactsQuery(currentUserId);
   // console.log(data, error, isLoading);
 
   const [deleteContact] = useDeleteContactByIdMutation();
@@ -35,7 +35,7 @@ export const Contact = () => {
           {getVisibleContacts(data, filter).map(({ id, name, phone }) => (
             <li key={id}>
               {name} : {phone}
-              <button type="button" onClick={() => deleteContact(id)}>
+              <button type="button" onClick={() => deleteContact([currentUserId, id])}>
                 Delete
               </button>
             </li>

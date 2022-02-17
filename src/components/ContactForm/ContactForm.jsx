@@ -1,9 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { usePostContactMutation } from "../../services/api";
 
 export const ContactForm = () => {
-  const [submitForm] = usePostContactMutation();
-
+  const [submitForm, mutationdata] = usePostContactMutation();
+  const currentUserId = useSelector((state) => state.loggedUser.id);
   return (
     <form
       onSubmit={(e) => {
@@ -12,7 +13,9 @@ export const ContactForm = () => {
         const phone = form.number.value;
         e.preventDefault();
         form.reset();
-        return submitForm({ name, phone });
+        console.log(mutationdata);
+        console.log(currentUserId);
+        submitForm([currentUserId, { name, phone }]);
       }}
     >
       <label>

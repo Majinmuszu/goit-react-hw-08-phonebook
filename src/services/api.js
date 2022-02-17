@@ -13,30 +13,39 @@ const phonebookApi = createApi({
     }),
 
     getUsers: builder.query({
-      query: () => `users/`,
-      providesTags: ["Users"],
+      query: () => `users`,
+      providesTags: ["Users", "Contacts"],
     }),
 
     getUserById: builder.query({
       query: (id) => `users/${id}`,
-      providesTags: ["Users"],
+      providesTags: ["Users", "Contacts"],
     }),
 
     deleteContactById: builder.mutation({
-      query: (id) => ({
-        url: `contacts/${id}`,
+      query: ([userId, contactId]) => ({
+        url: `users/${userId}/contacts/${contactId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Contacts"],
     }),
-    
+
     postContact: builder.mutation({
-      query: (contact) => ({
-        url: "contacts/",
+      query: ([userId, contact]) => ({
+        url: `users/${userId}/contacts`,
         method: "POST",
         body: contact,
       }),
       invalidatesTags: ["Contacts"],
+    }),
+
+    registerUser: builder.mutation({
+      query: (user) => ({
+        url: `users`,
+        method: "POST",
+        body: user,
+      }),
+      invalidatesTags: ["Users", "Contacts"],
     }),
   }),
 });
@@ -47,6 +56,7 @@ const {
   usePostContactMutation,
   useGetUsersQuery,
   useGetUserByIdQuery,
+  useRegisterUserMutation,
 } = phonebookApi;
 
 export {
@@ -56,4 +66,5 @@ export {
   useDeleteContactByIdMutation,
   usePostContactMutation,
   useGetUserByIdQuery,
+  useRegisterUserMutation,
 };

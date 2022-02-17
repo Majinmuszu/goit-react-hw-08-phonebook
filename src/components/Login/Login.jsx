@@ -21,7 +21,6 @@ const Login = () => {
     dispatch(userLoggedIn(loggedUser));
     navigate("/contacts/" + loggedUser.id);
     console.log(currentUser);
-    // TODO dispatch obiektu usera do store
   };
 
   return (
