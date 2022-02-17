@@ -1,5 +1,5 @@
-# React Phonebook App (no css, just functionality) 
+# React Phonebook App
 ## React, Redux, Redux Toolkit, RTK Query, React Content Loader, mockapi.io. 
-## https://react-phonebook-07.netlify.app/ 
+## https://react-phonebook-artur.netlify.app/
 
 
