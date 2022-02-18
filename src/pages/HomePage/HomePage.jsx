@@ -10,7 +10,6 @@ const HomePage = () => {
   Loading.remove(100);
   // const currentUser = useSelector((state) => state.loggedUser);
   // console.log(currentUser);
-  saveToSessionStorage("USER", []);
 
   return (
     <div>
