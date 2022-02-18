@@ -1,3 +1,4 @@
+import { Loading } from "notiflix";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,8 @@ import { userLoggedIn } from "../../redux/actions";
 import { useGetUsersQuery } from "../../services/api";
 
 const Login = () => {
-  const currentUser = useSelector((state) => state.loggedUser);
+  Loading.remove(1000)
+  // const currentUser = useSelector((state) => state.loggedUser);
   const { data } = useGetUsersQuery();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,19 +17,19 @@ const Login = () => {
     const formData = new FormData(e.currentTarget);
     const username = formData.get("username");
     const password = formData.get("password");
-    console.log(data);
+    // console.log(data);
     const loggedUser = data.find( (user) => user.username === username && user.password === password);
-    console.log(loggedUser);
+    // console.log(loggedUser);
     dispatch(userLoggedIn(loggedUser));
-    navigate("/contacts/" + loggedUser.id);
-    console.log(currentUser);
+    navigate(`/contacts/${loggedUser.id}`);
+    // console.log(currentUser);
   };
 
   return (
     <div>
       <h1>Login</h1>
       <p>
-        You can also use this: <br /> login: zbyszek pass: stonoga <br />
+        You can also use this: <br /> login: zbyszek <br/> pass: stonoga <br />
       </p>
       <form onSubmit={login}>
         <label>
