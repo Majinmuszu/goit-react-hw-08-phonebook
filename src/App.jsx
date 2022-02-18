@@ -11,14 +11,17 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
+
         <NavBar />
         <h1>Phonebook</h1>
+        
         <Routes>
           <Route path="/*" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contacts/:userId" element={<PrivatePage />} />
         </Routes>
+
       </div>
     );
   }
