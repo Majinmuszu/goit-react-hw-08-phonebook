@@ -10,11 +10,11 @@ const Logout = () => {
   const navigate = useNavigate();
   const logout = (e) => {
     e.preventDefault();
-    dispatch(userLoggedIn(false));
     saveToSessionStorage("USER", []);
     Loading.hourglass("Logout in process...");
-      setTimeout(() => {
-        navigate(`/`);
+    setTimeout(() => {
+      navigate(`/`);
+      dispatch(userLoggedIn(false));
       }, 1000);
   };
   return (
