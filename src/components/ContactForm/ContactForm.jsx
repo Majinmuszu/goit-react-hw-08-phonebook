@@ -15,8 +15,6 @@ export const ContactForm = () => {
         const phone = form.number.value;
         e.preventDefault();
         form.reset();
-        // console.log(mutationdata);
-        // console.log(currentUserId);
         submitForm([currentUserId, { name, phone }]);
         Loading.hourglass("Adding contact...");
       }}
