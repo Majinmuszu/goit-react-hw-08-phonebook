@@ -7,7 +7,6 @@ const Register = () => {
   const [registerUser] = useRegisterUserMutation();
   const navigate = useNavigate();
   const { data } = useGetUsersQuery();
-  
 
   const checkIfUsernameIsTaken = (name, username, password) => {
     if (data.find((user) => user.username === username)) {
@@ -40,15 +39,33 @@ const Register = () => {
       <form onSubmit={onRegister}>
         <label>
           Full Name:{" "}
-          <input name="name" type="text" placeholder="Full Name" required />
+          <input
+            name="name"
+            type="text"
+            placeholder="Full Name"
+            required
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          />
         </label>
         <label>
           username:{" "}
-          <input name="username" type="text" placeholder="username" required />
+          <input
+            name="username"
+            type="text"
+            placeholder="username"
+            required
+            pattern="^[a-z0-9_-]{3,25}$"
+          />
         </label>
         <label>
           password:{" "}
-          <input name="password" type="text" placeholder="password" required />
+          <input
+            name="password"
+            type="text"
+            placeholder="password"
+            required
+            pattern="^[a-zA-Z]\w{5,25}$"
+          />
         </label>
         <input type="submit" value="Create new user" />
       </form>

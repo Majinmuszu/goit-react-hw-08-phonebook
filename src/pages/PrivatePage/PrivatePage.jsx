@@ -7,16 +7,19 @@ import { ContactList } from "./../../components/ContactList/ContactList";
 // import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { Loading } from "notiflix";
+import { loadFromSessionStorage } from "../../services/sessionStorage";
+import { useGetUserByIdQuery } from "../../services/api";
 
 const PrivatePage = () => {
   Loading.remove(100);
-  const loggedUser = useSelector((state) => state.loggedUser);
-  console.log(loggedUser.id);
+  const loggedUserName = useSelector((state) => state.loggedUser.name)  || loadFromSessionStorage("USER")[1];
+  console.log(loggedUserName);
+  console.log(loadFromSessionStorage("USER")[1])
   return (
     <div>
       <>
         <ContactForm />
-        <h2>{loggedUser.name}'s Contacts</h2>
+        <h2>{loggedUserName}'s Contacts</h2>
         <Filter />
         <ContactList />
       </>

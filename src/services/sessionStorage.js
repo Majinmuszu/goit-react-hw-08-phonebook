@@ -19,7 +19,7 @@ const removeFromSessionStorage = (key) => {
   sessionStorage.removeItem(key);
 };
 
-export default {
+export {
   saveToSessionStorage,
   loadFromSessionStorage,
   removeFromSessionStorage,

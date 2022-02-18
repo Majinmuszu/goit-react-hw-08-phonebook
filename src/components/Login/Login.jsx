@@ -1,28 +1,33 @@
 import { Loading, Report } from "notiflix";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { userLoggedIn } from "../../redux/actions";
 import { useGetUsersQuery } from "../../services/api";
+import { saveToSessionStorage } from "../../services/sessionStorage";
 
 const Login = () => {
   Loading.remove(300);
-  // const currentUser = useSelector((state) => state.loggedUser);
+
   const { data } = useGetUsersQuery();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+
   const login = (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const username = formData.get("username");
     const password = formData.get("password");
-    // console.log(data);
+
     const loggedUser = data.find(
       (user) => user.username === username && user.password === password
     );
-    console.log(loggedUser);
-    if (loggedUser === false) {
+    // console.log(data);
+    // console.log(loggedUser);
+    if (loggedUser === undefined) {
       Report.failure(
         "Invalid user",
         "Please type in correct username and password <br/> Or Register new user",
@@ -30,10 +35,12 @@ const Login = () => {
       );
     } else {
       dispatch(userLoggedIn(loggedUser));
-      Loading.hourglass('Logging...')
-      setTimeout(() => {navigate(`/contacts/${loggedUser.id}`)}, 1000)
+      saveToSessionStorage("USER", [loggedUser.id, loggedUser.name])
+      Loading.hourglass("Logging...");
+      setTimeout(() => {
+        navigate(`/contacts/${loggedUser.id}`);
+      }, 1000);
     }
-    // console.log(currentUser);
   };
 
   return (
@@ -50,6 +57,7 @@ const Login = () => {
             type="text"
             placeholder="username"
             defaultValue={"juzek"}
+            pattern="^[a-z0-9_-]{3,25}$"
           />
         </label>
         <label>
@@ -59,6 +67,7 @@ const Login = () => {
             type="text"
             placeholder="password"
             defaultValue={"stalowy"}
+            pattern="^[a-zA-Z]\w{5,25}$"
           />
         </label>
         <button type="submit">Login</button>

@@ -5,6 +5,7 @@ import {
   useDeleteContactByIdMutation,
   useGetContactsQuery,
 } from "../../services/api";
+import { loadFromSessionStorage } from "../../services/sessionStorage";
 import Loader from "../Loader/Loader";
 
 const getVisibleContacts = (contacts, filter) => {
@@ -17,7 +18,7 @@ const getVisibleContacts = (contacts, filter) => {
   );
 };
 export const Contact = () => {
-  const currentUserId = useSelector(state => state.loggedUser.id)
+  const currentUserId = useSelector(state => state.loggedUser.id) || loadFromSessionStorage("USER")[0]
   console.log(currentUserId)
   const { data, error, isLoading } = useGetContactsQuery(currentUserId);
   // console.log(data, error, isLoading);
