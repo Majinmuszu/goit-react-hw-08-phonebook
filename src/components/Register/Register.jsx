@@ -4,12 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGetUsersQuery, useRegisterUserMutation } from "../../services/api";
 
 const Register = () => {
-  const [registerUser, { isSuccess }] = useRegisterUserMutation();
+  const [registerUser] = useRegisterUserMutation();
   const navigate = useNavigate();
   const { data } = useGetUsersQuery();
-  const redirect = () => {
-    navigate("/login");
-  };
+  
 
   const checkIfUsernameIsTaken = (name, username, password) => {
     if (data.find((user) => user.username === username)) {
@@ -22,7 +20,7 @@ const Register = () => {
       console.log("username available");
       registerUser({ name, username, password });
       Loading.hourglass("Registering New User...");
-      const timeout = setTimeout(redirect(), 3000);
+      setTimeout(() => navigate("/login"), 2000);
     }
   };
 

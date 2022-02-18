@@ -6,23 +6,17 @@ import { ContactList } from "./../../components/ContactList/ContactList";
 // import { useGetUserByIdQuery } from "../../services/api";
 // import { useParams } from "react-router";
 import { useSelector } from "react-redux";
+import { Loading } from "notiflix";
 
 const PrivatePage = () => {
+  Loading.remove(100);
   const loggedUser = useSelector((state) => state.loggedUser);
   console.log(loggedUser.id);
   return (
     <div>
       <>
         <ContactForm />
-        <h2>
-          <img
-            width="50px"
-            height="50px"
-            alt={loggedUser.name}
-            src={loggedUser.avatar}
-          />
-          {loggedUser.name}'s Contacts
-        </h2>
+        <h2>{loggedUser.name}'s Contacts</h2>
         <Filter />
         <ContactList />
       </>
