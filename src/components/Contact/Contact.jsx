@@ -1,6 +1,6 @@
+import { Loading } from "notiflix";
 import React from "react";
 import { useSelector } from "react-redux";
-// import { useParams } from "react-router-dom";
 import {
   useDeleteContactByIdMutation,
   useGetContactsQuery,
@@ -18,13 +18,24 @@ const getVisibleContacts = (contacts, filter) => {
   );
 };
 export const Contact = () => {
-  const currentUserId = useSelector(state => state.loggedUser.id) || loadFromSessionStorage("USER")[0]
-  console.log(currentUserId)
   const { data, error, isLoading } = useGetContactsQuery(currentUserId);
-  // console.log(data, error, isLoading);
-
   const [deleteContact] = useDeleteContactByIdMutation();
+  const 
+
+  const currentUserId =
+  useSelector((state) => state.loggedUser.id) ||
+  loadFromSessionStorage("USER")[0];
+  
   const filter = useSelector((state) => state.filter);
+  const onDelete = (id) => {
+    deleteContact([currentUserId, id]);
+    Loading.hourglass('Deleting contact...')
+  };
+  
+  
+  
+  
+  Loading.remove(1000)
   return (
     <>
       {error ? (
@@ -32,11 +43,11 @@ export const Contact = () => {
       ) : isLoading ? (
         <Loader />
       ) : data ? (
-        <>
+        <> 
           {getVisibleContacts(data, filter).map(({ id, name, phone }) => (
             <li key={id}>
               {name} : {phone}
-              <button type="button" onClick={() => deleteContact([currentUserId, id])}>
+              <button type="button" onClick={() => onDelete(id)}>
                 Delete
               </button>
             </li>

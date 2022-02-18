@@ -1,10 +1,12 @@
+import { Loading } from "notiflix";
 import React from "react";
 import { useSelector } from "react-redux";
 import { usePostContactMutation } from "../../services/api";
+import { loadFromSessionStorage } from "../../services/sessionStorage";
 
 export const ContactForm = () => {
-  const [submitForm, mutationdata] = usePostContactMutation();
-  const currentUserId = useSelector((state) => state.loggedUser.id);
+  const [submitForm] = usePostContactMutation();
+  const currentUserId = useSelector((state) => state.loggedUser.id) || loadFromSessionStorage("USER")[0];
   return (
     <form
       onSubmit={(e) => {
@@ -13,9 +15,10 @@ export const ContactForm = () => {
         const phone = form.number.value;
         e.preventDefault();
         form.reset();
-        console.log(mutationdata);
-        console.log(currentUserId);
+        // console.log(mutationdata);
+        // console.log(currentUserId);
         submitForm([currentUserId, { name, phone }]);
+        Loading.hourglass("Adding contact...");
       }}
     >
       <label>

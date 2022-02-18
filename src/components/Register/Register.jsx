@@ -16,7 +16,7 @@ const Register = () => {
         "Okay"
       );
     } else {
-      console.log("username available");
+      // console.log("username available");
       registerUser({ name, username, password });
       Loading.hourglass("Registering New User...");
       setTimeout(() => navigate("/login"), 2000);

@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const login = (e) => {
     e.preventDefault();
 
@@ -35,8 +34,8 @@ const Login = () => {
       );
     } else {
       dispatch(userLoggedIn(loggedUser));
-      saveToSessionStorage("USER", [loggedUser.id, loggedUser.name])
-      Loading.hourglass("Logging...");
+      saveToSessionStorage("USER", [loggedUser.id, loggedUser.name]);
+      Loading.hourglass("Login in process...");
       setTimeout(() => {
         navigate(`/contacts/${loggedUser.id}`);
       }, 1000);

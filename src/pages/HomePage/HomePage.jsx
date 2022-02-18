@@ -1,17 +1,26 @@
+import { Loading } from "notiflix";
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useGetUsersQuery } from "../../services/api";
+import { saveToSessionStorage } from "../../services/sessionStorage";
 
 const HomePage = () => {
-  const currentUser = useSelector((state) => state.loggedUser);
-  console.log(currentUser);
+  const { data } = useGetUsersQuery();
+  Loading.remove(100);
+  // const currentUser = useSelector((state) => state.loggedUser);
+  // console.log(currentUser);
+  saveToSessionStorage("USER", []);
+
   return (
     <div>
       <p>
+        {" "}
+        Are You one of our {data?.length} registered users? Then{" "}
         <Link to="/login">Sign In</Link>{" "}
       </p>
       <p>
-        <Link to="/register">Register new account</Link>{" "}
+        If not - <Link to="/register">Register new account</Link>{" "}
       </p>
     </div>
   );
