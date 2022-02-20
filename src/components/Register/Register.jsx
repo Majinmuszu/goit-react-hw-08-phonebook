@@ -45,6 +45,8 @@ const Register = () => {
             placeholder="Full Name"
             required
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+
           />
         </label>
         <label>
@@ -55,6 +57,7 @@ const Register = () => {
             placeholder="username"
             required
             pattern="^[a-z0-9_-]{3,25}$"
+            title="Username has to be min. 3, max. 25 characters long, and may contain only lowercase letters, dash and numbers. "
           />
         </label>
         <label>
@@ -65,6 +68,7 @@ const Register = () => {
             placeholder="password"
             required
             pattern="^[a-zA-Z]\w{5,25}$"
+            title="It's demo version, so password needs only lowercase letters and be min. 5 max. 25 characters long."
           />
         </label>
         <input type="submit" value="Create new user" />
