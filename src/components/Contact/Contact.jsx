@@ -1,5 +1,4 @@
 import { IconButton, ListItem } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Loading } from "notiflix";
 import React from "react";
