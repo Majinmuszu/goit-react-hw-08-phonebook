@@ -20,7 +20,7 @@ const Logout = () => {
   };
   return (
     <div>
-      <Button sx={{marginTop: '40px'}}variant="outlined" onClick={logout}>Logout</Button>
+      <Button sx={{marginTop: '40px'}}variant="contained" onClick={logout}>Logout</Button>
     </div>
   );
 };

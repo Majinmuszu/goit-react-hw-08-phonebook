@@ -52,6 +52,7 @@ const Login = () => {
           inputProps={{
             pattern: "^[a-z0-9_-]{3,25}$",
           }}
+          variant="filled"
           label="Username"
           size="small"
           margin="normal"
@@ -60,12 +61,16 @@ const Login = () => {
           placeholder="username"
           defaultValue={"juzek"}
           required
+          sx={{
+            borderBottom: "2px solid"
+          }}
         />
 
         <TextField
           inputProps={{
             pattern: "^[a-z0-9_-]{5,25}$",
           }}
+          variant="filled"
           label="Password"
           size="small"
           margin="normal"
@@ -74,9 +79,12 @@ const Login = () => {
           placeholder="password"
           defaultValue={"stalowy"}
           required
+          sx={{
+            borderBottom: "2px solid"
+          }}
         />
 
-        <Button variant="outlined" type="submit">
+        <Button variant="contained" type="submit">
           Login
         </Button>
       </form>

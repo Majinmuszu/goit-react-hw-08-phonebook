@@ -12,11 +12,14 @@ export const Filter = () => {
   };
   return (
     <div>
-      <TextField sx={{
-        width: '400px',
-        maxWidth: '80%'
-      }}
+      <TextField
+        sx={{
+          width: "400px",
+          maxWidth: "80%",
+          borderBottom: "2px solid",
+        }}
         margin="normal"
+        variant="filled"
         label="Find contacts by name"
         size="small"
         onChange={onFilter}

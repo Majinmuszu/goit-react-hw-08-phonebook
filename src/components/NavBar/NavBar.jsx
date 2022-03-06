@@ -14,7 +14,7 @@ const NavBar = () => {
     currentUser === false &&
     location.pathname !== `/contacts/${currentUserId}` ? (
       <>
-        <ButtonGroup sx={{marginTop: "40px"}} variant="outlined">
+        <ButtonGroup sx={{marginTop: "40px"}} variant="contained">
           <Button component={NavLink} to="/">
             Home Page
           </Button>

@@ -48,6 +48,7 @@ const Register = () => {
             title:
               "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
           }}
+          variant="filled"
           label="Full Name"
           size="small"
           margin="normal"
@@ -55,6 +56,9 @@ const Register = () => {
           type="text"
           placeholder="Full Name"
           required
+          sx={{
+            borderBottom: "2px solid"
+          }}
         />
         <TextField
           inputProps={{
@@ -62,6 +66,7 @@ const Register = () => {
             title:
               "Username has to be min. 3, max. 25 characters long, and may contain only lowercase letters, dash and numbers. ",
           }}
+          variant="filled"
           label="Username"
           size="small"
           margin="normal"
@@ -69,6 +74,9 @@ const Register = () => {
           type="text"
           placeholder="username"
           required
+          sx={{
+            borderBottom: "2px solid"
+          }}
         />
 
         <TextField
@@ -77,6 +85,7 @@ const Register = () => {
             title:
               "It's demo version, so password needs only lowercase letters and be min. 5 max. 25 characters long.",
           }}
+          variant="filled"
           label="Password"
           size="small"
           margin="normal"
@@ -84,8 +93,11 @@ const Register = () => {
           type="text"
           placeholder="password"
           required
+          sx={{
+            borderBottom: "2px solid"
+          }}
         />
-        <Button variant="outlined" type="submit" value="Create new user">
+        <Button variant="contained" type="submit" value="Create new user">
           Create new user
         </Button>
       </form>

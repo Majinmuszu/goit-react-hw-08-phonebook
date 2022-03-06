@@ -44,7 +44,7 @@ export const Contact = () => {
       ) : data ? (
         <>
           {getVisibleContacts(data, filter).map(({ id, name, phone }) => (
-            <ListItem sx={{ justifyContent: "space-between" }} key={id}>
+            <ListItem sx={{ justifyContent: "space-between", borderBottom: "3px solid" }} key={id}>
               {name} : {phone}
               <IconButton
                 color="error"

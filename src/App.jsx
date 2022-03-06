@@ -10,6 +10,18 @@ import {
   loadFromSessionStorage,
   saveToSessionStorage,
 } from "./services/sessionStorage";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#43271e",
+    },
+    secondary: {
+      main: "#2e7d32",
+    },
+  },
+});
 
 if (loadFromSessionStorage("USER") === undefined) {
   saveToSessionStorage("USER", []);
@@ -18,15 +30,17 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
-        <h1>Phonebook App</h1>
+        <ThemeProvider theme={theme}>
+          <NavBar />
+          <h1>Phonebook App</h1>
 
-        <Routes>
-          <Route path="/*" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/contacts/:userId" element={<PrivatePage />} />
-        </Routes>
+          <Routes>
+            <Route path="/*" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/contacts/:userId" element={<PrivatePage />} />
+          </Routes>
+        </ThemeProvider>
       </div>
     );
   }
