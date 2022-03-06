@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { Loading } from "notiflix";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -19,7 +20,7 @@ const Logout = () => {
   };
   return (
     <div>
-      <button onClick={logout}>Logout</button>
+      <Button sx={{marginTop: '40px'}}variant="outlined" onClick={logout}>Logout</Button>
     </div>
   );
 };

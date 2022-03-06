@@ -1,3 +1,4 @@
+import { Button, TextField } from "@mui/material";
 import { Loading, Report } from "notiflix";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 import { userLoggedIn } from "../../redux/actions";
 import { useGetUsersQuery } from "../../services/api";
 import { saveToSessionStorage } from "../../services/sessionStorage";
+import s from "./Login.module.css";
 
 const Login = () => {
   Loading.remove(300);
@@ -44,32 +46,39 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Login</h1>
-      <p>
-        You can also use this: <br /> login: zbyszek <br /> pass: stonoga <br />
-      </p>
-      <form onSubmit={login}>
-        <label>
-          username:{" "}
-          <input
-            name="username"
-            type="text"
-            placeholder="username"
-            defaultValue={"juzek"}
-            pattern="^[a-z0-9_-]{3,25}$"
-          />
-        </label>
-        <label>
-          password:{" "}
-          <input
-            name="password"
-            type="text"
-            placeholder="password"
-            defaultValue={"stalowy"}
-            pattern="^[a-zA-Z]\w{5,25}$"
-          />
-        </label>
-        <button type="submit">Login</button>
+      <h2>Login</h2>
+      <form className={s.form} onSubmit={login}>
+        <TextField
+          inputProps={{
+            pattern: "^[a-z0-9_-]{3,25}$",
+          }}
+          label="Username"
+          size="small"
+          margin="normal"
+          name="username"
+          type="text"
+          placeholder="username"
+          defaultValue={"juzek"}
+          required
+        />
+
+        <TextField
+          inputProps={{
+            pattern: "^[a-z0-9_-]{5,25}$",
+          }}
+          label="Password"
+          size="small"
+          margin="normal"
+          name="password"
+          type="text"
+          placeholder="password"
+          defaultValue={"stalowy"}
+          required
+        />
+
+        <Button variant="outlined" type="submit">
+          Login
+        </Button>
       </form>
       <p>
         Do not have account? <Link to="/register">Sign Up</Link>{" "}

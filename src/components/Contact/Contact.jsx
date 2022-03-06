@@ -1,3 +1,6 @@
+import { IconButton, ListItem } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Loading } from "notiflix";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -42,12 +45,17 @@ export const Contact = () => {
       ) : data ? (
         <>
           {getVisibleContacts(data, filter).map(({ id, name, phone }) => (
-            <li key={id}>
+            <ListItem sx={{ justifyContent: "space-between" }} key={id}>
               {name} : {phone}
-              <button type="button" onClick={() => onDelete(id)}>
-                Delete
-              </button>
-            </li>
+              <IconButton
+                color="error"
+                variant="outlined"
+                type="button"
+                onClick={() => onDelete(id)}
+              >
+                <DeleteForeverIcon />
+              </IconButton>
+            </ListItem>
           ))}
         </>
       ) : null}

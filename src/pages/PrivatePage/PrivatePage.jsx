@@ -27,8 +27,8 @@ const PrivatePage = () => {
     <div>
       <>
         <ContactForm />
-        <h2>{loggedUserName}'s Contacts</h2>
         <Filter />
+        <h2>{loggedUserName}'s Contacts</h2>
         <ContactList />
       </>
     </div>
