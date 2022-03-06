@@ -6,17 +6,20 @@ import { Route, Routes } from "react-router";
 import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import PrivatePage from "./pages/PrivatePage/PrivatePage";
-import { saveToSessionStorage } from "./services/sessionStorage";
+import {
+  loadFromSessionStorage,
+  saveToSessionStorage,
+} from "./services/sessionStorage";
 
-saveToSessionStorage("USER", []);
+if (loadFromSessionStorage("USER") === undefined) {
+  saveToSessionStorage("USER", []);
+}
 export default class App extends Component {
-  
   render() {
     return (
       <div className="App">
-
         <NavBar />
-        <h1>Phonebook</h1>
+        <h1>Phonebook App</h1>
 
         <Routes>
           <Route path="/*" element={<HomePage />} />
@@ -24,7 +27,6 @@ export default class App extends Component {
           <Route path="/register" element={<Register />} />
           <Route path="/contacts/:userId" element={<PrivatePage />} />
         </Routes>
-
       </div>
     );
   }

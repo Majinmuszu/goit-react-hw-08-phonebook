@@ -4,7 +4,10 @@ import { Filter } from "./../../components/Filter/Filter";
 import { ContactList } from "./../../components/ContactList/ContactList";
 import { useSelector } from "react-redux";
 import { Loading } from "notiflix";
-import { loadFromSessionStorage } from "../../services/sessionStorage";
+import {
+  loadFromSessionStorage,
+  saveToSessionStorage,
+} from "../../services/sessionStorage";
 import { useLocation, useNavigate } from "react-router";
 
 const PrivatePage = () => {
@@ -18,11 +21,10 @@ const PrivatePage = () => {
   useEffect(() => {
     if (location.pathname !== `/contacts/${loggedUserId}`) {
       navigate("/");
+      saveToSessionStorage("USER", []);
     }
-  },[location.pathname, loggedUserId, navigate])
-  
-    
- 
+  }, [location.pathname, loggedUserId, navigate]);
+
   return (
     <div>
       <>
