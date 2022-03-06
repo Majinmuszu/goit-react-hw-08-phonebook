@@ -1,6 +1,10 @@
 .App {
   text-align: center;
-  background-image: url(./images/paper.jpg);
+  background-color:antiquewhite;
+  background-image: url(./images/paperImg.jpg);
   background-size: cover;
   height: 100vh;
+}
+a {
+  color: rgb(87, 151, 91);
 }

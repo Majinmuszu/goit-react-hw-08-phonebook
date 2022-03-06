@@ -9,8 +9,8 @@ const Loader = () => {
         width={400}
         height={150}
         viewBox="0 0 400 150"
-        backgroundColor="#97a3dd"
-        foregroundColor="#787878"
+        backgroundColor="#2e7d32"
+        foregroundColor="#43271e"
       >
         <circle cx="10" cy="20" r="8" />
         <rect x="25" y="15" rx="5" ry="5" width="250" height="10" />

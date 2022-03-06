@@ -1,6 +1,7 @@
 import { Loading } from "notiflix";
 import React from "react";
 import { Link } from "react-router-dom";
+import MainImage from "../../components/MainImage/MainImage";
 import { useGetUsersQuery } from "../../services/api";
 
 const HomePage = () => {
@@ -9,6 +10,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <MainImage />
       <p>
         {" "}
         Are You one of our {data?.length} registered users? Then{" "}
