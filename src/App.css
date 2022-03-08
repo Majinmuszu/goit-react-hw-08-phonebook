@@ -3,7 +3,7 @@
   background-color:antiquewhite;
   background-image: url(./images/paperImg.jpg);
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
 }
 a {
   color: rgb(87, 151, 91);
